@@ -1,0 +1,6 @@
+.venv/
+.vs/
+build/
+dist/
+.editorconfig
+NotifyMe.spec

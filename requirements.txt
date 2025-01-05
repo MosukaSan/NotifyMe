@@ -1,0 +1,14 @@
+altgraph==0.17.4
+easygui==0.98.3
+keyboard==0.13.5
+packaging==24.2
+pefile==2023.2.7
+pyinstaller==6.11.1
+pyinstaller-hooks-contrib==2024.11
+pypiwin32==223
+pywin32==308
+pywin32-ctypes==0.2.3
+setuptools==75.6.0
+six==1.17.0
+win11toast==0.35
+winsdk==1.0.0b10
