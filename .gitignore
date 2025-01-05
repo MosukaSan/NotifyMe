@@ -2,5 +2,7 @@
 .vs/
 build/
 dist/
+Output/
 .editorconfig
 NotifyMe.spec
+setup.iss
