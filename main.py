@@ -49,8 +49,6 @@ def notification_time_range(notification):
         seconds += 1
 
 def start_notification(notification):
-    toast("Test", "All working ;)", icon=os.path.dirname(os.path.abspath(__file__)) + "\\default.png")
-
     if notification["schedule"] != None:
         thread = threading.Thread(target=notification_schedule, args=(notification,), daemon=True)
         thread.start()
@@ -62,9 +60,10 @@ def main():
     ctypes.windll.kernel32.SetConsoleTitleW("NotifyMe")
 
     notifications = []
+    appdata = os.getenv('APPDATA') + "\\NotifyMe\\"
 
-    if os.path.exists("notifications.json") and os.stat("notifications.json").st_size != 0:
-        with open("notifications.json", "r", encoding="utf-8") as notifications_file:
+    if os.path.exists(f"{appdata}notifications.json") and os.stat(f"{appdata}notifications.json").st_size != 0:
+        with open(f"{appdata}notifications.json", "r", encoding="utf-8") as notifications_file:
             notifications = json.load(notifications_file)
 
     print("NotifyMe, customize your notifications!")
@@ -103,7 +102,7 @@ def main():
                 "time_range": time_range,
             })
 
-            with open("notifications.json", "w", encoding="utf-8") as notifications_file:
+            with open(f"{appdata}notifications.json", "w", encoding="utf-8") as notifications_file:
                 json.dump(notifications, notifications_file, ensure_ascii=False, indent=4)
         elif answer == "2":
             if notifications:
@@ -141,12 +140,12 @@ def main():
                             new_value = int(input("Insert the new value: "))
                         notifications[answer - 1][notification_keys] = new_value
 
-                        with open("notifications.json", "w", encoding="utf-8") as notifications_file:
+                        with open(f"{appdata}notifications.json", "w", encoding="utf-8") as notifications_file:
                             json.dump(notifications, notifications_file, ensure_ascii=False, indent=4)
                     elif answer2 == "2":
                         del notifications[answer - 1]
 
-                        with open("notifications.json", "w", encoding="utf-8") as notifications_file:
+                        with open(f"{appdata}notifications.json", "w", encoding="utf-8") as notifications_file:
                             json.dump(notifications, notifications_file, ensure_ascii=False, indent=4)
 
                         print("Deleted")
@@ -163,7 +162,7 @@ def main():
             os.system("cls")
             notifications = []
 
-            with open("notifications.json", "w", encoding="utf-8") as notifications_file:
+            with open(f"{appdata}notifications.json", "w", encoding="utf-8") as notifications_file:
                         json.dump(notifications, notifications_file, ensure_ascii=False, indent=4)
 
             print("All notifications removed")
