@@ -1,4 +1,6 @@
 # NotifyMe
+![](https://img.shields.io/badge/license-GPLv3-orange.svg)
+![](https://tokei.rs/b1/github/MosukaSan/NotifyMe?category=code)
 
 <p align=center>
     <img src=default.png>
